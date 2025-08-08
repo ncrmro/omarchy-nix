@@ -9,7 +9,7 @@ in {
     bind =
       cfg.quick_app_bindings
       ++ [
-        "SUPER, space, exec, wofi --show drun --sort-order=alphabetical"
+        "SUPER, space, exec, walker -p \"Start…\""
         "SUPER SHIFT, SPACE, exec, pkill -SIGUSR1 waybar"
         # "SUPER CTRL, SPACE, exec, ~/.local/share/omarchy/bin/swaybg-next"
         # "SUPER SHIFT CTRL, SPACE, exec, ~/.local/share/omarchy/bin/omarchy-theme-next"

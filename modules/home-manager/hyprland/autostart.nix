@@ -11,6 +11,7 @@
       "hyprsunset"
       "systemctl --user start hyprpolkitagent"
       "wl-clip-persist --clipboard regular & clipse -listen"
+      "walker --gapplication-service"
 
       # "dropbox-cli start"  # Uncomment to run Dropbox
     ];

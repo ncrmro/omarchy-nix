@@ -38,8 +38,9 @@
     ];
 
     layerrule = [
-      # Proper background blur for wofi
-      "blur,wofi"
+      # Proper background blur for walker
+      "blur,walker"
+      "noanim,walker"
       "blur,waybar"
     ];
   };

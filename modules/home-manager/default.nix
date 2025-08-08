@@ -34,7 +34,7 @@ in {
     (import ./starship.nix)
     (import ./vscode.nix)
     (import ./waybar.nix inputs)
-    (import ./wofi.nix)
+    (import ./walker.nix)
     (import ./zoxide.nix)
     (import ./zsh.nix)
   ];
