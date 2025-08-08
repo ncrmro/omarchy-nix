@@ -1,0 +1,3 @@
+[submodule "omarchy-arch"]
+	path = omarchy-arch
+	url = https://github.com/basecamp/omarchy.git
