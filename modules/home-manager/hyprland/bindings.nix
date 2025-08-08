@@ -9,8 +9,6 @@ in {
     bind =
       cfg.quick_app_bindings
       ++ [
-        # Default omarchy keybinding users walker -p which fails with "Error parsing option -p"
-        "SUPER, space, exec, walker --placeholder 'Start...'"
         "SUPER SHIFT, SPACE, exec, pkill -SIGUSR1 waybar"
         # "SUPER CTRL, SPACE, exec, ~/.local/share/omarchy/bin/swaybg-next"
         # "SUPER SHIFT CTRL, SPACE, exec, ~/.local/share/omarchy/bin/omarchy-theme-next"

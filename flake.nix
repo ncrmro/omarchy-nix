@@ -4,7 +4,8 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     hyprland.url = "github:hyprwm/Hyprland";
     nix-colors.url = "github:misterio77/nix-colors";
-    walker.url = "github:abenz1267/walker";
+    # Pinning to v0.13.22 because in v0.13.23 the -p flag doesn't work
+    walker.url = "github:abenz1267/walker/v0.13.22";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
