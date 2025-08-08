@@ -4,7 +4,7 @@
     recursive = true;
   };
   home.file.".config/omarchy/themes" = {
-    source = ../../omarchy-arch/config/themes;
+    source = ../../omarchy-arch/themes;
     recursive = true;
   };
 }
