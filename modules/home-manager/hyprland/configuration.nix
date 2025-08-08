@@ -14,7 +14,9 @@ in {
     ./looknfeel.nix
     ./windows.nix
   ];
-  wayland.windowManager.hyprland.settings = {
+  wayland.windowManager.hyprland.settings = {    
+    source = lib.mkDefault "~/.local/share/omarchy/default/hypr/bindings.conf";
+    
     # Default applications
     "$terminal" = lib.mkDefault "ghostty";
     "$fileManager" = lib.mkDefault "nautilus --new-window";
@@ -23,6 +25,8 @@ in {
     "$passwordManager" = lib.mkDefault "1password";
     "$messenger" = lib.mkDefault "signal-desktop";
     "$webapp" = lib.mkDefault "$browser --app";
+
+    
 
     monitor = cfg.monitors;
   };
