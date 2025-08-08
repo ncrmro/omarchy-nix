@@ -15,10 +15,10 @@ in {
     enable = true;
     settings = {
       preload = [
-        selected_wallpaper_path
+        "${config.xdg.configHome}/omarchy/current/background"
       ];
       wallpaper = [
-        ",${selected_wallpaper_path}"
+        ",${config.xdg.configHome}/omarchy/current/background"
       ];
     };
   };

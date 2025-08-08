@@ -1,22 +1,53 @@
 inputs: {config, pkgs, lib, ...}: let
   cfg = config.omarchy;
+  
+  #####
+  # We have to overide some of the bin files and this is really ugly..
+  #####
+
+  # Files to exclude from the bin directory (we provide our own overrides)
+  excludedBinFiles = [
+    "omarchy-theme-bg-next"
+  ];
+  
+  # Get all bin files except the ones we want to override
+  binDir = ../../omarchy-arch/bin;
+  binFiles = builtins.attrNames (builtins.readDir binDir);
+  filteredBinFiles = builtins.filter (name: !(builtins.elem name excludedBinFiles)) binFiles;
+  
+  # Create source paths for filtered bin files
+  binFileSources = map (fileName: {
+    source = binDir + "/${fileName}";
+    target = ".local/share/omarchy/bin/${fileName}";
+    executable = true;
+  }) filteredBinFiles;
+  
 in {
-  home.file.".local/share/omarchy/default" = {
-    source = ../../omarchy-arch/default;
-    recursive = true;
-  };
-  home.file.".local/share/omarchy/logo.txt" = {
-    source = ../../omarchy-arch/logo.txt;
-    recursive = true;
-  };
-  home.file.".config/omarchy/themes" = {
-    source = ../../omarchy-arch/themes;
-    recursive = true;
-  };
-  home.file.".local/share/omarchy/bin" = {
-    source = ../../omarchy-arch/bin;
-    recursive = true;
-  };
+  home.file = builtins.listToAttrs (map (entry: {
+    name = entry.target;
+    value = builtins.removeAttrs entry ["target"];
+  }) ([
+    {
+      source = ../../omarchy-arch/default;
+      target = ".local/share/omarchy/default";
+      recursive = true;
+    }
+    {
+      source = ../../omarchy-arch/logo.txt;
+      target = ".local/share/omarchy/logo.txt";
+    }
+    {
+      source = ../../omarchy-arch/themes;
+      target = ".config/omarchy/themes";
+      recursive = true;
+    }
+    {
+      source = ../../bin/omarchy-theme-bg-next;
+      target = ".local/share/omarchy/bin/omarchy-theme-bg-next";
+      executable = true;
+    }
+  ] ++ binFileSources));
+  
   home.sessionPath = [
     ".local/share/omarchy/bin"
   ];
@@ -56,6 +87,20 @@ in {
           $DRY_RUN_CMD ln -nsf "$CURRENT_THEME_DIR/mako.ini" "${config.xdg.configHome}/mako/config"
         fi
         
+        # Create background symlink if theme has backgrounds and no current background exists
+        BACKGROUNDS_DIR="$CURRENT_THEME_DIR/backgrounds"
+        CURRENT_BACKGROUND_LINK="${config.xdg.configHome}/omarchy/current/background"
+        
+        if [[ -d "$BACKGROUNDS_DIR" ]] && [[ ! -L "$CURRENT_BACKGROUND_LINK" ]]; then
+          # Find the first background file in the backgrounds directory
+          FIRST_BACKGROUND=$(find "$BACKGROUNDS_DIR" -type l \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.webp" \) | sort | head -n 1)
+          
+          if [[ -n "$FIRST_BACKGROUND" ]]; then
+            echo "Creating initial background symlink: $(basename "$FIRST_BACKGROUND")"
+            $DRY_RUN_CMD ln -nsf "$FIRST_BACKGROUND" "$CURRENT_BACKGROUND_LINK"
+          fi
+        fi
+        
         echo "Theme $SELECTED_THEME linked successfully"
       else
         echo "Warning: Theme '$SELECTED_THEME' not found at $THEME_PATH"
@@ -64,4 +109,8 @@ in {
       echo "Theme $SELECTED_THEME already linked correctly"
     fi
   '';
+  home.packages = [
+    # needed for omarchy-menu-keybindings
+    pkgs.jq
+  ];
 }
