@@ -5,10 +5,22 @@ in {
     source = ../../omarchy-arch/default;
     recursive = true;
   };
+  home.file.".local/share/omarchy/logo.txt" = {
+    source = ../../omarchy-arch/logo.txt;
+    recursive = true;
+  };
   home.file.".config/omarchy/themes" = {
     source = ../../omarchy-arch/themes;
     recursive = true;
   };
+  home.file.".local/share/omarchy/bin" = {
+    source = ../../omarchy-arch/bin;
+    recursive = true;
+  };
+  home.sessionPath = [
+    ".local/share/omarchy/bin"
+  ];
+  # Create initial theme symlinks
   home.activation.system-link-default-theme = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     # Create necessary directories
     mkdir -p "${config.xdg.configHome}/omarchy/current"

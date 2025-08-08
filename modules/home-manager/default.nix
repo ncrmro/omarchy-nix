@@ -41,12 +41,7 @@ in {
     (import ./zsh.nix)
   ];
 
-  home.file = {
-    ".local/share/omarchy/bin" = {
-      source = ../../bin;
-      recursive = true;
-    };
-  };
+
   home.packages = packages.homePackages;
 
   colorScheme = if (config.omarchy.theme == "generated_light" || config.omarchy.theme == "generated_dark")

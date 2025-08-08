@@ -39,4 +39,9 @@ in {
     noto-fonts-emoji
     nerd-fonts.caskaydia-mono
   ];
+  # This allows all the omarchy shell scripts to resolve /bin/bash
+  systemd.tmpfiles.rules = [
+    "L+ /bin/bash - - - - ${pkgs.bash}/bin/bash"
+  ];
+
 }
