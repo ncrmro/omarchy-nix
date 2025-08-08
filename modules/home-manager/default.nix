@@ -22,7 +22,7 @@ inputs: {
     else null;
 in {
   imports = [
-    (import ./omarchy-defaults.nix)
+    (import ./omarchy-defaults.nix inputs)
     (import ./hyprland.nix inputs)
     (import ./hyprlock.nix inputs)
     (import ./hyprpaper.nix)
