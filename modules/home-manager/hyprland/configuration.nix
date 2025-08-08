@@ -15,8 +15,8 @@ in {
     ./windows.nix
   ];
   wayland.windowManager.hyprland.settings = {    
-    source = lib.mkDefault "~/.local/share/omarchy/default/hypr/bindings.conf";
-    
+    source = "~/.local/share/omarchy/default/hypr/bindings.conf";
+
     # Default applications
     "$terminal" = lib.mkDefault "ghostty";
     "$fileManager" = lib.mkDefault "nautilus --new-window";

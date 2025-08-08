@@ -65,17 +65,6 @@ lib: {
         "SUPER SHIFT, G, exec, $webapp=https://web.whatsapp.com/"
         "SUPER, X, exec, $webapp=https://x.com/"
         "SUPER SHIFT, X, exec, $webapp=https://x.com/compose/post"
-
-        "SUPER, return, exec, $terminal"
-        "SUPER, F, exec, $fileManager"
-        "SUPER, B, exec, $browser"
-        "SUPER, M, exec, $music"
-        "SUPER, N, exec, $terminal -e nvim"
-        "SUPER, T, exec, $terminal -e btop"
-        "SUPER, D, exec, $terminal -e lazydocker"
-        "SUPER, G, exec, $messenger"
-        "SUPER, O, exec, obsidian -disable-gpu"
-        "SUPER, slash, exec, $passwordManager"
       ];
     };
     exclude_packages = lib.mkOption {
