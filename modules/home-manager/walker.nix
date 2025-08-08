@@ -1,8 +1,4 @@
-
-  config,
-  pkgs,
-  ...
-}: {
+{...}: {
   # Walker configuration
   home.file = {
     ".config/walker" = {
