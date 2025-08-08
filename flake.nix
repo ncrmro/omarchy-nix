@@ -8,6 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    self.submodules = true;
   };
   outputs = inputs @ {
     self,
