@@ -18,11 +18,6 @@ in {
         "SUPER, S, togglespecialworkspace, magic"
         "SUPER SHIFT, S, movetoworkspace, special:magic"
 
-        # Screenshots
-        ", PRINT, exec, hyprshot -m region"
-        "SHIFT, PRINT, exec, hyprshot -m window"
-        "CTRL, PRINT, exec, hyprshot -m output"
-
         # Clipse
         "CTRL SUPER, V, exec, ghostty --class clipse -e clipse"
       ];
