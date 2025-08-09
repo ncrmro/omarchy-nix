@@ -9,10 +9,6 @@ in {
     bind =
       cfg.quick_app_bindings
       ++ [
-        "SUPER SHIFT, SPACE, exec, pkill -SIGUSR1 waybar"
-        # "SUPER CTRL, SPACE, exec, ~/.local/share/omarchy/bin/swaybg-next"
-        # "SUPER SHIFT CTRL, SPACE, exec, ~/.local/share/omarchy/bin/omarchy-theme-next"
-
         "SUPER, Backspace, killactive,"
         
         "SUPER, comma, workspace, -1"

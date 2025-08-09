@@ -3,19 +3,11 @@ inputs: {
   pkgs,
   lib,
   ...
-}: let
-  palette = config.colorScheme.palette;
-  convert = inputs.nix-colors.lib.conversions.hexToRGBString;
-  selected_wallpaper_path = (import ../../lib/selected-wallpaper.nix config).wallpaper_path;
-
-  backgroundRgb = "rgba(${convert ", " palette.base00}, 0.8)";
-  surfaceRgb = "rgb(${convert ", " palette.base02})";
-  foregroundRgb = "rgb(${convert ", " palette.base05})";
-  foregroundMutedRgb = "rgb(${convert ", " palette.base04})";
-in {
+}: {
   programs.hyprlock = {
     enable = true;
     settings = {
+      source = "${config.xdg.configHome}/omarchy/current/theme/hyprlock.conf";
       general = {
         disable_loading_bar = true;
         no_fade_in = false;
@@ -25,9 +17,9 @@ in {
       };
       background = {
         monitor = "";
-        path = selected_wallpaper_path;
-        # blur_passes = 3;
-        # brightness = 0.5;
+        path = "${config.xdg.configHome}/omarchy/current/background";
+        blur_passes = 3;
+        brightness = 0.5;
       };
 
       input-field = {
@@ -37,15 +29,15 @@ in {
         halign = "center";
         valign = "center";
 
-        inner_color = surfaceRgb;
-        outer_color = foregroundRgb; # #d3c6aa
+        inner_color = "$inner_color";
+        outer_color = "$outer_color";
         outline_thickness = 4;
 
         font_family = "CaskaydiaMono Nerd Font";
         font_size = 32;
-        font_color = foregroundRgb;
+        font_color = "$font_color";
 
-        placeholder_color = foregroundMutedRgb;
+        placeholder_color = "$placeholder_color";
         placeholder_text = "  Enter Password 󰈷 ";
         check_color = "rgba(131, 192, 146, 1.0)";
         fail_text = "Wrong";
