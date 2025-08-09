@@ -18,12 +18,12 @@ in {
     source = "~/.local/share/omarchy/default/hypr/bindings.conf";
 
     # Default applications
-    "$terminal" = lib.mkDefault "ghostty";
-    "$fileManager" = lib.mkDefault "nautilus --new-window";
-    "$browser" = lib.mkDefault "chromium --new-window --ozone-platform=wayland";
-    "$music" = lib.mkDefault "spotify";
-    "$passwordManager" = lib.mkDefault "1password";
-    "$messenger" = lib.mkDefault "signal-desktop";
+    "$terminal" = lib.mkDefault "uwsm app -- ghostty";
+    "$fileManager" = lib.mkDefault "uwsm app -- nautilus --new-window";
+    "$browser" = lib.mkDefault "uwsm app -- chromium --new-window --ozone-platform=wayland";
+    "$music" = lib.mkDefault "uwsm app --spotify";
+    "$passwordManager" = lib.mkDefault "uwsm app --1password";
+    "$messenger" = lib.mkDefault "uwsm app -- signal-desktop";
     "$webapp" = lib.mkDefault "$browser --app";
 
     
