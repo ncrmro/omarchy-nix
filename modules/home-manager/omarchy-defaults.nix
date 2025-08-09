@@ -65,8 +65,9 @@ in {
     SELECTED_THEME="${cfg.theme}"
     THEME_PATH="$THEMES_DIR/$SELECTED_THEME"
     
-    # Check if the current theme symlink points to the correct theme
-    if [[ ! -L "$CURRENT_THEME_DIR" ]] || [[ "$(readlink "$CURRENT_THEME_DIR")" != "$THEME_PATH" ]]; then
+    # Only create theme symlink if current theme directory doesn't exist
+    # This allows user theme changes to persist if they've changed it outside of nix
+    if [[ ! -L "$CURRENT_THEME_DIR" ]]; then
       echo "Linking theme: $SELECTED_THEME"
       
       # Check if the selected theme exists
