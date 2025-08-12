@@ -28,6 +28,7 @@ let
     playerctl
     gnome-themes-extra
     pavucontrol
+    wl-clipboard
   ];
 
   # Essential system packages - cannot be excluded
