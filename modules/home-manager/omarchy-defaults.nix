@@ -13,6 +13,7 @@ inputs: {
   # Files to exclude from the bin directory (we provide our own overrides)
   excludedBinFiles = [
     "omarchy-theme-bg-next"
+    # "omarchy-cmd-screenrecord"
   ];
 
   # Get all bin files except the ones we want to override
